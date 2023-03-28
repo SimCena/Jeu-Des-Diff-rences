@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@nestjs/mongoose": "^9.2.0",
+    "bmp-js": "^0.1.0",
+    "mongoose": "^6.6.0"
+  }
+}

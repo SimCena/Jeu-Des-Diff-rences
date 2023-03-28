@@ -1,0 +1,61 @@
+#box-background {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 8px 0px 0px;
+    width: 40vw;
+    height: 25vh;
+    backdrop-filter: blur(6px);
+}
+
+.chat-zone {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 96%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chat-lines {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    padding: 0px 0px 12px 0px;
+}
+
+.chat-line {
+    font-size: 18px;
+    font-family: Roboto;
+    overflow-wrap: normal;
+}
+
+.system-message {
+    color: rgb(255, 242, 0);
+}
+
+.player0-message {
+    color: rgb(120, 233, 255);
+}
+
+.player1-message {
+    color: rgb(255, 212, 120);
+}
+
+.text-box {
+    padding: 0px 16px 0px 16px;
+
+    > div {
+        padding-bottom: 16px;
+    }
+
+    .mat-form-field-suffix {
+        align-self: center;
+    }
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+    overflow-wrap: normal;
+    white-space: normal;
+}

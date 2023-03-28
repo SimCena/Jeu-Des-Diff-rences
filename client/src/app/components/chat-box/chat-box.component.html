@@ -1,0 +1,15 @@
+<div class="mat-elevation-z3" id="box-background">
+    <mat-list #chatZone class="chat-zone">
+        <mat-list-item *ngFor="let message of getMessagesList()" class="chat-lines">
+            <div [ngClass]="getMessageClass(message)" class="chat-line" mat-line>
+                <p class="no-text-selection">{{ message.time }} - {{ message.author }} | {{ message.body }}</p>
+            </div>
+        </mat-list-item>
+    </mat-list>
+    <mat-form-field *ngIf="toggleInput" appearance="outline" class="text-box">
+        <mat-label class="no-text-selection">Message</mat-label>
+        <input (keypress)="validateInput()" (keydown.enter)="sendMessage()" [formControl]="message" matInput class="no-text-selection" />
+        <button (click)="sendMessage()" class="send-button" mat-flat-button matSuffix>Envoyer</button>
+        <mat-error *ngIf="message.invalid" class="no-text-selection">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+</div>

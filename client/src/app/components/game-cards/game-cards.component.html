@@ -1,0 +1,51 @@
+<mat-card class="card">
+    <img mat-card-image src="{{ this.imageUrl }}" class="no-text-selection" />
+    <mat-card-header>
+        <mat-card-title class="game-title no-text-selection">
+            {{ game.name }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="two-columns">
+            <mat-list class="one-column">
+                <h3 class="no-text-selection">Solo</h3>
+                <mat-list-item *ngFor="let ranking of game.solo; index as id" class="no-text-selection one-line">
+                    {{ getRankingTime(ranking.time) }}
+                    -
+                    {{ ranking.name }}
+                </mat-list-item>
+            </mat-list>
+            <mat-list class="one-column">
+                <h3 class="no-text-selection">1 vs. 1</h3>
+                <mat-list-item *ngFor="let ranking of game.multiplayer; index as id" class="no-text-selection one-line">
+                    {{ getRankingTime(ranking.time) }}
+                    -
+                    {{ ranking.name }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="two-columns">
+        <button mat-flat-button *ngIf="this.href.includes('/select')" (click)="launchGame()" color="primary">
+            <mat-icon>person</mat-icon>
+            <mat-label> Jouer</mat-label>
+        </button>
+        <button mat-flat-button *ngIf="this.href.includes('/select') && !this.isGamePending" (click)="createMultiplayerGame()" color="primary">
+            <mat-icon>group</mat-icon>
+            <mat-label> Créer</mat-label>
+        </button>
+        <button mat-flat-button *ngIf="this.href.includes('/select') && this.isGamePending" (click)="joinMultiplayerGame()" color="accent">
+            <mat-icon>group</mat-icon>
+            <mat-label> Joindre</mat-label>
+        </button>
+
+        <button mat-flat-button *ngIf="this.href === '/admin'" (click)="deleteGame()" color="warn">
+            <mat-icon>delete</mat-icon>
+            <mat-label> Supprimer</mat-label>
+        </button>
+        <button mat-flat-button *ngIf="this.href === '/admin'" (click)="resetGame()" color="accent">
+            <mat-icon>refresh</mat-icon>
+            <mat-label> Réinitialiser</mat-label>
+        </button>
+    </mat-card-actions>
+</mat-card>

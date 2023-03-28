@@ -1,0 +1,23 @@
+.create {
+    left: 60%;
+}
+
+.settings {
+    left: 40%;
+}
+
+.button {
+    position: absolute;
+    bottom: 16px;
+    translate: -50%;
+    width: 150px;
+}
+
+#reset {
+    position: absolute;
+    display: flex;
+    top: 5%;
+    left: 50%;
+    translate: -50%;
+    gap: 20px;
+}

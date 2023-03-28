@@ -1,0 +1,82 @@
+.columns {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-self: center;
+}
+
+button {
+    margin-top: 10px;
+    width: 420px;
+    height: 64px;
+    text-align: center;
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    font-size: 24px;
+}
+
+.header-item {
+    justify-content: center;
+    text-align: center;
+    font-size: 48px;
+}
+
+.name-bar {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    * {
+        color: #c8eaf9;
+    }
+}
+
+.buttons {
+    position: absolute;
+    bottom: 64px;
+}
+
+.server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}
+
+.dark-mode-toggle {
+    color: #c8eaf9;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+p {
+    height: 24px;
+    font-size: 16px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px;
+}
+
+.background-element {
+    position: absolute;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+    width: max;
+    height: max;
+}
+
+.foreground {
+    z-index: 1;
+}

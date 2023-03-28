@@ -1,0 +1,12 @@
+export const WIDTH = 300;
+export const HEIGHT = 200;
+export const RED_POSITION = 0;
+export const YELLOW_POSITION = 0.2;
+export const GREEN_POSITION = 0.4;
+export const CYAN_POSITION = 0.6;
+export const BLUE_POSITION = 0.8;
+export const MAGENTA_POSITION = 1;
+export const WHITE_POSITION = 0.1;
+export const WHITE_TRANSPARENT_POSITION = 0.5;
+export const BLACK_TRANSPARENT_POSITION = 0.5;
+export const BLACK_POSITION = 0.95;

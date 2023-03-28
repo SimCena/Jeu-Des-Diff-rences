@@ -1,0 +1,4 @@
+<canvas #canvas (click)="pickColor($event)"></canvas>
+<div [hidden]="isCursorHidden" style="width: 0px; height: 0px">
+    <mat-icon [ngStyle]="cursorPosition">gps_not_fixed</mat-icon>
+</div>

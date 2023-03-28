@@ -1,0 +1,12 @@
+<h1 mat-dialog-title class="title no-text-selection">Entrez votre nom</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="standard" class="input">
+        <mat-label class="no-text-selection">Votre nom de joueur</mat-label>
+        <input matInput [formControl]="name" (keypress)="validateName()" (keydown.enter)="closeWithValidation()" />
+        <mat-error *ngIf="name.invalid" class="no-text-selection">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="buttons">
+    <button mat-button (click)="closeWithoutValidation()" id="cancelButton">Annuler</button>
+    <button mat-button (click)="closeWithValidation()" [disabled]="name.invalid" id="playButton">Jouer</button>
+</div>

@@ -1,0 +1,9 @@
+export const IMAGE_WIDTH = 640;
+export const IMAGE_HEIGHT = 480;
+export const IMAGE_SIZE = IMAGE_HEIGHT * IMAGE_WIDTH;
+export const IMAGE_TYPE = 'image/bmp';
+export const BIT_DEPTH = 24;
+export const BYTES_PER_RGBA_VALUE = 4;
+export const BMP_WIDTH_OFFSET = 18;
+export const BMP_HEIGHT_OFFSET = 22;
+export const BMP_BIT_DEPTH_OFFSET = 28;

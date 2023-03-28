@@ -1,0 +1,33 @@
+<div id="title">
+    <h1 mat-dialog-title class="no-text-selection">Constantes de jeu</h1>
+    <button mat-icon-button color="warn" class="reset-button" (click)="setDefaultConstants()">
+        <mat-icon>autorenew</mat-icon>
+    </button>
+</div>
+<form *ngIf="constantsForm" mat-dialog-content class="form" [formGroup]="constantsForm">
+    <mat-form-field appearance="outline">
+        <mat-label class="no-text-selection">Temps initial du compte à rebours</mat-label>
+        <input matInput type="number" formControlName="initialTime" />
+        <mat-error *ngIf="constantsForm.get('initialTime')!.invalid" class="no-text-selection">{{ getErrorMessage(type.InitialTime) }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label class="no-text-selection">Temps de pénalité par indice</mat-label>
+        <input matInput type="number" formControlName="hintUsedTime" />
+        <mat-error *ngIf="constantsForm.get('hintUsedTime')!.invalid" class="no-text-selection">{{ getErrorMessage(type.HintUsedTime) }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label class="no-text-selection">Temps gagné par découverte</mat-label>
+        <input matInput type="number" formControlName="goodGuessTime" />
+        <mat-error *ngIf="constantsForm.get('goodGuessTime')!.invalid" class="no-text-selection">{{ getErrorMessage(type.GoodGuessTime) }}</mat-error>
+    </mat-form-field>
+</form>
+<div mat-dialog-actions class="button-container">
+    <button mat-dialog-close mat-stroked-button color="warn">
+        <mat-icon>cancel</mat-icon>
+        <mat-label> Annuler </mat-label>
+    </button>
+    <button [disabled]="areInputsInvalid()" (click)="closeAndSave()" mat-dialog-close mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+        <mat-label> Enregistrer </mat-label>
+    </button>
+</div>

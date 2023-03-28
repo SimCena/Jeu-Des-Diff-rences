@@ -1,0 +1,20 @@
+<app-background></app-background>
+<app-game-viewer></app-game-viewer>
+<div id="reset">
+    <button (click)="confirmDelete()" mat-raised-button color="warn">
+        <mat-icon>delete</mat-icon>
+        <mat-label> Supprimer tout</mat-label>
+    </button>
+    <button (click)="confirmReset()" mat-raised-button color="accent">
+        <mat-icon>refresh</mat-icon>
+        <mat-label> Réinitialiser tout</mat-label>
+    </button>
+</div>
+<button mat-raised-button routerLink="/creation" color="primary" class="create button">
+    <mat-icon>add_circle</mat-icon>
+    <mat-label> Créer un jeu </mat-label>
+</button>
+<button mat-raised-button (click)="modifyGameConstants()" color="primary" class="settings button">
+    <mat-icon>settings</mat-icon>
+    <mat-label> Paramètres </mat-label>
+</button>

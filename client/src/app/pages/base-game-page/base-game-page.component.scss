@@ -1,0 +1,65 @@
+.game-parameters {
+    display: flex;
+    flex-direction: column;
+    background-color: #c8eaf9;
+    border-radius: 8px;
+    height: fit-content;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    translate: -50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 16px;
+
+    mat-icon {
+        margin-right: 10px;
+    }
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.og {
+    position: absolute;
+    left: 22vw;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+}
+
+.mod {
+    position: absolute;
+    right: 22vw;
+    top: 50%;
+    translate: 50% -50%;
+    z-index: 1;
+}
+
+app-cheating-canvases {
+    position: absolute;
+    pointer-events: none;
+    top: 0vh;
+    z-index: 1;
+}
+
+#errorMsg {
+    position: absolute;
+    z-index: 2;
+    font-family: 'Lucida Console', 'Courier New', monospace;
+    font-size: large;
+    color: red;
+}
+
+app-background-canvas {
+    position: absolute;
+    top: 60vh;
+}
+
+.abandon {
+    width: 100%;
+}

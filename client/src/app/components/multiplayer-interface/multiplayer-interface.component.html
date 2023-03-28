@@ -1,0 +1,27 @@
+<div class="game-info">
+    <h1 class="no-text-selection">{{ gameHandlerService.getGameName() }} ({{ gameHandlerService.getDifferenceImageCount() }} différences)</h1>
+    <h2 class="no-text-selection">Multijoueur - Classique</h2>
+</div>
+<div *ngIf="gameRunnerService.playerInfos.length === 2" class="players-info">
+    <div id="player1">
+        <mat-icon class="person-icon">person</mat-icon>
+        <p class="no-text-selection">
+            {{ gameRunnerService.playerInfos[localIndex].name }}
+        </p>
+        <h2 class="difference-count no-text-selection">
+            <mat-icon>search</mat-icon>
+            {{ gameRunnerService.getDifferencesFound(localIndex) }}
+        </h2>
+    </div>
+    <div id="player2">
+        <mat-icon class="person-icon">person</mat-icon>
+        <p class="no-text-selection no-text-selection">
+            {{ gameRunnerService.playerInfos[opponentIndex].name }}
+        </p>
+        <h2 class="difference-count no-text-selection">
+            <mat-icon>search</mat-icon>
+            {{ gameRunnerService.getDifferencesFound(opponentIndex) }}
+        </h2>
+    </div>
+</div>
+<app-chat-box [toggleInput]="true" (keydown)="$event.stopPropagation()"></app-chat-box>

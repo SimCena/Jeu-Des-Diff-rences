@@ -1,0 +1,34 @@
+<app-background></app-background>
+<mat-spinner *ngIf="!gameHandlerService.gameHasStarted || !gameHandlerService.playerReady" class="centered no-text-selection">Loading...</mat-spinner>
+<div [hidden]="!gameHandlerService.gameHasStarted || !gameHandlerService.playerReady">
+    <div class="game-parameters">
+        <mat-list>
+            <mat-list-item>
+                <mat-icon mat-list-icon>hourglass_empty</mat-icon>
+                <time mat-line id="time" class="no-text-selection">{{ clockService.getFormattedTime() }}</time>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-raised-button class="abandon" color="warn" (click)="gameHandlerService.confirmAbandon()">
+                    <mat-icon>warning</mat-icon>
+                    <mat-label class="no-text-selection"> Abandonner </mat-label>
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <app-background-canvas
+        #og
+        class="og"
+        [canvasId]="getCanvasId().ORIGINAL"
+        (click)="gameHandlerService.guessDifference(true, $event)"
+    ></app-background-canvas>
+    <app-background-canvas
+        #mod
+        class="mod"
+        [canvasId]="getCanvasId().MODIFIED"
+        (click)="gameHandlerService.guessDifference(false, $event)"
+    ></app-background-canvas>
+    <app-cheating-canvases #ogCheat class="og" [isClueCanvas]="false" [hidden]="!gameHandlerService.isCheatMode"></app-cheating-canvases>
+    <app-cheating-canvases #modCheat class="mod" [isClueCanvas]="false" [hidden]="!gameHandlerService.isCheatMode"></app-cheating-canvases>
+    <router-outlet></router-outlet>
+    <p id="errorMsg" [hidden]="gameHandlerService.isErrorMsgHidden" [ngStyle]="getErrorMessagePosition()" class="no-text-selection">Erreur</p>
+</div>

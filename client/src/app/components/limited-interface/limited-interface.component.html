@@ -1,0 +1,33 @@
+<div class="game-info">
+    <h2 *ngIf="limitedGameRunnerService.isSolo()" class="no-text-selection">Solo - Temps limité</h2>
+    <h2 *ngIf="!limitedGameRunnerService.isSolo()" class="no-text-selection">Multijoueur - Temps limité</h2>
+</div>
+<div id="players-container" *ngIf="multiGameRunnerService.playerInfos.length > 0">
+    <span id="player0" class="player-info">
+        <mat-icon class="person-icon no-text-selection">person</mat-icon>
+        <p class="no-text-selection">
+            {{ multiGameRunnerService.playerInfos[0].name }}
+        </p>
+        <button
+            class="difference-count"
+            mat-raised-button
+            color="primary"
+            matTooltip="Utiliser un indice"
+            matTooltipPosition="right"
+            *ngIf="gameHandlerService.gameConstants && limitedGameRunnerService.isSolo()"
+            (click)="soloGameRunnerService.activateClue(true)"
+        >
+            <mat-icon>highlight</mat-icon>
+            <mat-label> {{ cheatingModeService.cluesLeft }}/3 (- {{ gameHandlerService.gameConstants.hintUsedTime }}s)</mat-label>
+        </button>
+    </span>
+    <span id="player1" class="player-info" *ngIf="!limitedGameRunnerService.isSolo() && multiGameRunnerService.playerInfos[1]">
+        <mat-icon class="person-icon no-text-selection">person</mat-icon>
+        <p class="no-text-selection">
+            {{ multiGameRunnerService.playerInfos[1].name }}
+        </p>
+    </span>
+</div>
+<app-cheating-canvases #ogClue class="og" [isClueCanvas]="true" [hidden]="!soloGameRunnerService.isClueMode"></app-cheating-canvases>
+<app-cheating-canvases #modClue class="mod" [isClueCanvas]="true" [hidden]="!soloGameRunnerService.isClueMode"></app-cheating-canvases>
+<app-chat-box [toggleInput]="!limitedGameRunnerService.isSolo()"></app-chat-box>

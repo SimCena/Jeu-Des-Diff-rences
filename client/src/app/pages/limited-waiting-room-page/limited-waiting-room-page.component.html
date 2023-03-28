@@ -1,0 +1,10 @@
+<div [ngClass]="darkModeService.getBackgroundClass()">
+    <div class="container">
+        <div class="player-container">
+            <h1 class="player-container-header no-text-selection">En recherche d'un partenaire...</h1>
+            <hr />
+            <mat-spinner class="centered no-text-selection">Loading...</mat-spinner>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" class="go-back-button" (click)="returnToHome()">Revenir à la sélection de partie</button>
+</div>

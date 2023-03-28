@@ -1,0 +1,148 @@
+<app-background></app-background>
+<div class="centered upload-section">
+    <h4 class="no-text-selection no-text-selection">Téléversement</h4>
+    <div class="upload-inline">
+        <app-file-upload #importOriginalButton [labelTxt]="'Originale'" [canvasId]="getCanvasIdEnum().ORIGINAL" (fileUpload)="requestImage($event)">
+        </app-file-upload>
+        <app-file-upload #importModifiedButton [labelTxt]="'Modifiée'" [canvasId]="getCanvasIdEnum().MODIFIED" (fileUpload)="requestImage($event)">
+        </app-file-upload>
+    </div>
+    <app-file-upload #importBothButton [labelTxt]="'Partout'" [canvasId]="getCanvasIdEnum().BOTH" (fileUpload)="requestImage($event)">
+    </app-file-upload>
+</div>
+
+<div class="middle tools-section">
+    <div class="tool-section">
+        <div class="tools-button-row">
+            <button mat-raised-button color="primary" (click)="goBack()" matTooltip="Annuler" matTooltipPosition="left">
+                <mat-icon>undo-icon</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" (click)="goForward()" matTooltip="Rétablir" matTooltipPosition="right">
+                <mat-icon>redo-icon</mat-icon>
+            </button>
+        </div>
+        <div class="tools-button-row">
+            <button
+                mat-raised-button
+                color="primary"
+                (click)="transferForeground(getCanvasIdEnum().MODIFIED)"
+                matTooltip="Transférer avant-plan"
+                matTooltipPosition="left"
+            >
+                <mat-icon>arrow_back</mat-icon>
+                <mat-icon>flip_to_front</mat-icon>
+            </button>
+            <button
+                mat-raised-button
+                color="primary"
+                (click)="transferForeground(getCanvasIdEnum().ORIGINAL)"
+                matTooltip="Transférer avant-plan"
+                matTooltipPosition="right"
+            >
+                <mat-icon>arrow_forward</mat-icon>
+                <mat-icon>flip_to_front</mat-icon>
+            </button>
+        </div>
+        <button mat-raised-button color="primary" (click)="reverseForeground()" matTooltip="Intervertir les avant-plans" matTooltipPosition="right">
+            <mat-icon>swap_horiz</mat-icon>
+            <mat-icon>flip_to_front</mat-icon>
+        </button>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="reverseBackground()"
+            matTooltip="Intervertir les arrières-plans"
+            matTooltipPosition="right"
+        >
+            <mat-icon>swap_horiz</mat-icon>
+            <mat-icon>flip_to_back</mat-icon>
+        </button>
+    </div>
+    <div class="tool-section">
+        <mat-form-field appearance="standard">
+            <mat-label class="no-text-selection">Nom du jeu</mat-label>
+            <input (keydown)="validateGameName()" matInput [formControl]="gameName" />
+            <mat-error *ngIf="gameName.invalid">{{ getError() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label class="no-text-selection">
+                <mat-icon>fullscreen</mat-icon>
+                Rayon de différence
+            </mat-label>
+            <mat-select [(ngModel)]="radius">
+                <mat-option [value]="0">
+                    <mat-icon *ngIf="radius === 0" fontIcon="check"></mat-icon>
+                    0
+                </mat-option>
+                <mat-option [value]="3">
+                    <mat-icon *ngIf="radius === 3" fontIcon="check"></mat-icon>
+                    3
+                </mat-option>
+                <mat-option [value]="9">
+                    <mat-icon *ngIf="radius === 9" fontIcon="check"></mat-icon>
+                    9
+                </mat-option>
+                <mat-option [value]="15">
+                    <mat-icon *ngIf="radius === 15" fontIcon="check"></mat-icon>
+                    15
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="tool-section">
+        <div class="tool-row">
+            <button mat-raised-button *ngIf="penSelected" color="primary" class="button">
+                <mat-icon>brush</mat-icon>
+            </button>
+            <button mat-stroked-button *ngIf="!penSelected" (click)="selectTool(true)" color="primary" class="button">
+                <mat-icon>brush</mat-icon>
+            </button>
+            <mat-slider [formControl]="penSlider" (valueChange)="selectTool(true)" min="1" max="48" tickInterval="10"></mat-slider>
+        </div>
+        <div class="tool-row">
+            <button mat-raised-button *ngIf="!penSelected" color="primary">
+                <mat-icon svgIcon="eraser"></mat-icon>
+            </button>
+            <button mat-stroked-button *ngIf="penSelected" (click)="selectTool(false)" color="primary">
+                <mat-icon svgIcon="eraser"></mat-icon>
+            </button>
+            <mat-slider [formControl]="eraserSlider" (valueChange)="selectTool(false)" min="1" max="48" tickInterval="10"></mat-slider>
+        </div>
+        <app-color-picker #color (click)="changeColor()"></app-color-picker>
+    </div>
+</div>
+
+<div class="original canvas">
+    <h1 class="no-text-selection">Image originale</h1>
+    <button mat-stroked-button (click)="eraseForegroundImage(getCanvasIdEnum().ORIGINAL)" class="erase-button">
+        <mat-icon>delete</mat-icon>
+        Effacer Avant-Plan
+    </button>
+    <button mat-stroked-button (click)="eraseBackgroundImage(getCanvasIdEnum().ORIGINAL)" class="erase-button">
+        <mat-icon>delete</mat-icon>
+        Effacer Arrière-Plan
+    </button>
+    <app-foreground-canvas #originalForeground [canvasId]="getCanvasIdEnum().ORIGINAL" (drawEvent)="saveState($event)"></app-foreground-canvas>
+    <app-background-canvas #originalBackground [canvasId]="getCanvasIdEnum().ORIGINAL"></app-background-canvas>
+</div>
+<div class="modified canvas">
+    <h1 class="no-text-selection">Image modifiée</h1>
+    <button mat-stroked-button (click)="eraseForegroundImage(getCanvasIdEnum().MODIFIED)" class="erase-button right-aligned">
+        <mat-icon>delete</mat-icon>
+        Effacer Avant-Plan
+    </button>
+    <button mat-stroked-button (click)="eraseBackgroundImage(getCanvasIdEnum().MODIFIED)" class="erase-button right-aligned">
+        <mat-icon>delete</mat-icon>
+        Effacer Arrière-Plan
+    </button>
+    <app-foreground-canvas #modifiedForeground [canvasId]="getCanvasIdEnum().MODIFIED" (drawEvent)="saveState($event)"></app-foreground-canvas>
+    <app-background-canvas #modifiedBackground [canvasId]="getCanvasIdEnum().MODIFIED"></app-background-canvas>
+</div>
+
+<div class="centered validation-section">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate" color="primary"></mat-progress-bar>
+    <button mat-raised-button color="primary" (click)="getDifferenceImage(false)" [disabled]="loading">Valider les différences</button>
+    <button mat-raised-button color="primary" (click)="saveGame()" [disabled]="loading">Sauvegarder</button>
+</div>
+
+<button mat-raised-button color="accent" routerLink="/admin" class="admin-button">Administration</button>

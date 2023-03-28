@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="title no-text-selection">Entrez votre nom</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="standard" class="input">
+        <mat-label lcass no-text-selection>Votre nom de joueur</mat-label>
+        <input matInput [formControl]="name" (keypress)="validateName()" />
+        <mat-error *ngIf="name.invalid" lcass no-text-selection>{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="buttons">
+    <button (click)="close(false, type.Cancel)" mat-stroked-button cdkFocusInitial>Annuler</button>
+    <button (click)="close(true, type.Solo)" [disabled]="name.invalid" mat-raised-button color="primary">
+        <mat-icon>person</mat-icon>
+        <mat-label> Solo</mat-label>
+    </button>
+    <button (click)="close(true, type.Coop)" [disabled]="name.invalid" mat-raised-button color="primary">
+        <mat-icon>group</mat-icon>
+        <mat-label> Coop</mat-label>
+    </button>
+</div>

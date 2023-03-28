@@ -1,0 +1,85 @@
+app-chat-box {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.game-info {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 32px;
+    left: 50%;
+    translate: -50% 0%;
+
+    h1 {
+        color: #003952;
+    }
+
+    h2 {
+        color: #003952;
+        font-style: italic;
+    }
+}
+
+#players-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 24px;
+    left: 50vw;
+    top: 20vh;
+    translate: -50% 0%;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .person-icon {
+        transform: scale(3);
+        margin: 16px;
+    }
+    p {
+        font-size: 20px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    color: white;
+}
+
+#player0 {
+    color: rgb(120, 233, 255);
+}
+
+#player1 {
+    color: rgb(255, 212, 120);
+}
+
+.difference-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.og {
+    position: absolute;
+    left: 22vw;
+    top: 50%;
+    translate: -50% -50%;
+}
+
+.mod {
+    position: absolute;
+    right: 22vw;
+    top: 50%;
+    translate: 50% -50%;
+}
+
+app-cheating-canvases {
+    position: absolute;
+    pointer-events: none;
+    top: 0vh;
+    z-index: 2;
+}

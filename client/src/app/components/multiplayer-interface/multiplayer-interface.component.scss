@@ -1,0 +1,63 @@
+app-chat-box {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.game-info {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 32px;
+    left: 50%;
+    translate: -50% 0%;
+
+    h1 {
+        color: #003952;
+    }
+
+    h2 {
+        color: #003952;
+        font-style: italic;
+    }
+}
+
+#player1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(120, 233, 255);
+}
+
+#player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 212, 120);
+}
+
+.players-info {
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    translate: -50% 0%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    justify-content: center;
+    .person-icon {
+        transform: scale(3);
+        margin: 16px;
+    }
+    p {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    color: white;
+}
+
+.difference-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

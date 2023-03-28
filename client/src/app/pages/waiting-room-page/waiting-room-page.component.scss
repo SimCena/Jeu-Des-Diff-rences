@@ -1,0 +1,72 @@
+.container {
+    display: grid;
+    border: solid rgb(60, 177, 226) 0.1em;
+    background-color: rgba(144, 222, 255, 0.4);
+    padding: 16px;
+    position: absolute;
+    bottom: 55%;
+    left: 50%;
+    top: -40%;
+    translate: -50% 50%;
+    width: 80%;
+}
+
+.player-container-header {
+    position: relative;
+    color: white;
+    text-align: center;
+    height: fit-content;
+    margin-bottom: 8px;
+}
+.player-component {
+    position: relative;
+    left: 10%;
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    width: 80%;
+    height: 10%;
+    padding: 1%;
+    border-radius: 1em;
+    border: solid rgb(5, 82, 115) 1px;
+    background-color: rgba(255, 255, 255, 0.435);
+}
+.player-name {
+    h1 {
+        text-align: left;
+        margin-top: 3%;
+    }
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.go-back-button {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.button {
+    left: 25%;
+    width: 50%;
+}
+
+.accept {
+    background-color: green;
+    color: white;
+}
+
+.refuse {
+    background-color: red;
+    color: white;
+}
+
+hr {
+    width: 90%;
+    color: white;
+}

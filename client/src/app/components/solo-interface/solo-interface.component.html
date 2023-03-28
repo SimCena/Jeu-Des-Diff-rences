@@ -1,0 +1,29 @@
+<div class="game-info">
+    <h1 class="no-text-selection">{{ gameHandlerService.getGameName() }} ({{ gameHandlerService.getDifferenceImageCount() }} différences)</h1>
+    <h2 class="no-text-selection">Solo - Classique</h2>
+</div>
+<div class="player-info">
+    <mat-icon class="person-icon">person</mat-icon>
+    <p class="no-text-selection">
+        {{ gameHandlerService.playerName }}
+    </p>
+    <h2 class="difference-count no-text-selection">
+        <mat-icon>search</mat-icon>
+        {{ gameRunnerService.getDifferencesMessage() }}
+    </h2>
+    <button
+        class="difference-count"
+        mat-raised-button
+        color="primary"
+        matTooltip="Utiliser un indice"
+        matTooltipPosition="right"
+        *ngIf="gameHandlerService.gameConstants"
+        (click)="gameRunnerService.activateClue(false)"
+    >
+        <mat-icon>highlight</mat-icon>
+        <mat-label> {{ cheatingModeService.cluesLeft }}/3 (+ {{ gameHandlerService.gameConstants.hintUsedTime }}s)</mat-label>
+    </button>
+</div>
+<app-cheating-canvases #ogClue class="og" [isClueCanvas]="true" [hidden]="!gameRunnerService.isClueMode"></app-cheating-canvases>
+<app-cheating-canvases #modClue class="mod" [isClueCanvas]="true" [hidden]="!gameRunnerService.isClueMode"></app-cheating-canvases>
+<app-chat-box [toggleInput]="false"></app-chat-box>

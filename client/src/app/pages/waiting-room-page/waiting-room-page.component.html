@@ -1,0 +1,20 @@
+<div [ngClass]="darkModeService.getBackgroundClass()">
+    <div class="container">
+        <div class="player-container">
+            <h1 *ngIf="this.gameService.isHost" class="player-container-header no-text-selection">Liste de joueurs désirant rejoindre votre partie</h1>
+            <h1 *ngIf="!this.gameService.isHost" class="player-container-header no-text-selection">En attente de la décision de l'hôte...</h1>
+            <hr />
+            <mat-spinner *ngIf="!this.gameService.isHost" class="centered no-text-selection">Loading...</mat-spinner>
+            <div *ngFor="let player of this.waitingList" class="player-component no-text-selection">
+                <span class="player-name"
+                    ><h1>{{ player.name }}</h1></span
+                >
+                <button mat-raised-button class="button accept" (click)="acceptPlayer(player)">Accepter</button>
+                <button mat-raised-button class="button refuse" (click)="rejectPlayer(player)">Refuser</button>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" class="go-back-button" (click)="this.gameService.returnToSelect()">
+        Revenir à la sélection de partie
+    </button>
+</div>

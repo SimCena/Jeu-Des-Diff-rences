@@ -1,0 +1,16 @@
+<div>
+    <mat-spinner *ngIf="!gameRequestService.gamesReceived" class="centered no-text-selection">Loading...</mat-spinner>
+    <h1 *ngIf="gameRequestService.gamesReceived && !gameRequestService.hasGames()" class="centered no-text-selection">
+        Aucun jeu dans la base de données. Ajoutez-en un en visitant
+        <a routerLink="/creation"> la page de création! </a>
+    </h1>
+    <div *ngIf="gameRequestService.hasGames() && socketService.roomsReceived && gameRequestService.gamesReceived" class="game-cards">
+        <app-game-cards *ngFor="let game of this.gameRequestService.games | slice: firstGameID:firstGameID + 4" [game]="game"></app-game-cards>
+    </div>
+
+    <button mat-fab routerLink="/home" type="button" class="btn btn-icon btn-primary home-button" aria-label="home">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-raised-button [disabled]="!hasGameBefore()" (click)="goBackward()" disabled color="primary" class="left-button">Précédent</button>
+    <button mat-raised-button [disabled]="!hasGameAfter()" (click)="goForward()" disabled color="primary" class="right-button">Suivant</button>
+</div>

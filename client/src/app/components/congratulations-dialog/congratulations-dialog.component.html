@@ -1,0 +1,27 @@
+<div id="high-score" *ngIf="scoreInfo.isPlayerWinner && scoreInfo.playerRanking !== type.None">
+    <img [src]="iconPathMap.get(scoreInfo.playerRanking)" class="no-text-selection" />
+    <h1 mat-dialog-title class="no-text-selection">Nouveau record!</h1>
+    <img [src]="iconPathMap.get(scoreInfo.playerRanking)" class="no-text-selection" />
+</div>
+<h1 mat-dialog-title *ngIf="scoreInfo.isPlayerWinner && scoreInfo.playerRanking === type.None" class="no-text-selection">Félicitations!</h1>
+<h1 mat-dialog-title *ngIf="!scoreInfo.isPlayerWinner && scoreInfo.winnerName !== tie" class="no-text-selection">Bien essayé!</h1>
+<h1 mat-dialog-title *ngIf="scoreInfo.winnerName === tie" class="no-text-selection">Égalité!</h1>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="no-text-selection">person</mat-icon>
+            <div mat-line class="no-text-selection">{{ scoreInfo.winnerName }}</div>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="no-text-selection">sports_esports</mat-icon>
+            <div mat-line class="no-text-selection">{{ scoreInfo.gameName }}</div>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="no-text-selection">timer</mat-icon>
+            <div mat-line class="no-text-selection">{{ getFormattedTime() }}</div>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions class="button-container">
+    <button id="homeButton" mat-dialog-close mat-raised-button color="primary">Menu principal</button>
+</div>

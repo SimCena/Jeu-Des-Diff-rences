@@ -1,0 +1,12 @@
+export const MAX_OPACITY = 255;
+export const HALF_OPACITY = 125;
+export const RGB_RED = 'rgb(255, 0, 0)';
+export const RGB_YELLOW = 'rgb(255, 255, 0)';
+export const RGB_GREEN = 'rgb(0, 255, 0)';
+export const RGB_CYAN = 'rgb(0, 255, 255)';
+export const RGB_BLUE = 'rgb(0, 0, 255)';
+export const RGB_MAGENTA = 'rgb(255, 0, 255)';
+export const RGBA_WHITE = 'rgba(255, 255, 255, 1)';
+export const RGBA_WHITE_TRANSPARENT = 'rgba(255, 255, 255, 0)';
+export const RGBA_BLACK = 'rgba(0, 0, 0, 1)';
+export const RGBA_BLACK_TRANSPARENT = 'rgba(0, 0, 0, 0)';

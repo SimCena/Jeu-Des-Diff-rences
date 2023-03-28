@@ -1,0 +1,23 @@
+<h1 mat-dialog-title *ngIf="scoreInfo.timeExpired" class="no-text-selection">Le temps s'est écoulé...</h1>
+<h1 mat-dialog-title *ngIf="!scoreInfo.timeExpired" class="no-text-selection">Félicitations!</h1>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="no-text-selection">person</mat-icon>
+            <div mat-line *ngIf="scoreInfo.teammateName" class="no-text-selection">{{ scoreInfo.playerName }} et {{ scoreInfo.teammateName }}</div>
+            <div mat-line *ngIf="!scoreInfo.teammateName" class="no-text-selection">{{ scoreInfo.playerName }}</div>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="no-text-selection">search</mat-icon>
+            <div mat-line *ngIf="scoreInfo.score > 1" class="no-text-selection">{{ scoreInfo.score }} différences trouvées</div>
+            <div mat-line *ngIf="scoreInfo.score <= 1" class="no-text-selection">{{ scoreInfo.score }} différence trouvée</div>
+        </mat-list-item>
+        <mat-list-item *ngIf="!scoreInfo.timeExpired">
+            <mat-icon mat-list-icon class="no-text-selection">timer</mat-icon>
+            <div mat-line class="no-text-selection">{{ scoreInfo.formattedTime }} restant</div>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions class="button-container">
+    <button id="homeButton" mat-dialog-close mat-raised-button color="primary">Menu principal</button>
+</div>

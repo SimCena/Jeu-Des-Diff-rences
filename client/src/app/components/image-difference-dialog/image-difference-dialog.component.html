@@ -1,0 +1,9 @@
+<div mat-dialog-actions class="close-button">
+    <button mat-mini-fab (click)="closeDialog()" color="warn" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<h1 mat-dialog-title class="image-text no-text-selection">Votre image possède {{ numberOfDifference }} différences</h1>
+<div mat-dialog-content>
+    <canvas #popUpCanvas class="pop-up-image mat-elevation-z15"></canvas>
+</div>

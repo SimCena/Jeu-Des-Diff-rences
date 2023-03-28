@@ -1,0 +1,25 @@
+#high-score {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    height: 32px;
+    width: 32px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-top: 16px;
+}
+
+.button-container {
+    justify-content: center;
+}
+
+mat-list {
+    margin-left: 25%;
+}

@@ -1,0 +1,5 @@
+<button mat-raised-button color="accent" (click)="fileUpload.click()" class="button no-text-selection">
+    <mat-icon>upload</mat-icon>
+    {{ labelTxt }}
+    <input #fileUpload type="file" [id]="getId()" accept=".bmp" (input)="notifyUpload($event.target!)" />
+</button>
