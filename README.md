@@ -1,4 +1,4 @@
-# Jeu-Des-Diff-rences
+# Jeu-Des-Differences
 Projet réalisé dans le cadre du cours de projet de deuxième année (LOG2990) à Polytechnique Montréal.
 
 Conception, réalisation, validation et test d'une application Web de taille moyenne.
